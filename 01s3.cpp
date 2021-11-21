@@ -29,8 +29,6 @@ bool warshall()
       {
         if (j == k)
           continue;
-        if (i == 0 && j == 1)
-          cout << "";
         tmp[i][j] = tmp[i][j] | (tmp[i][k] & tmp[k][j]);
       }
     }
