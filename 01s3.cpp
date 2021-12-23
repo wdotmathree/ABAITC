@@ -16,17 +16,13 @@ using namespace std;
 bool adj[26][26];
 bool tmp[26][26];
 
-bool warshall()
-{
+bool warshall() {
   copy(*adj, *adj + 26 * 26, *tmp);
-  for (int k = 0; k < 26; k++)
-  {
-    for (int i = 0; i < 26; i++)
-    {
+  for (int k = 0; k < 26; k++) {
+    for (int i = 0; i < 26; i++) {
       if (i == k)
         continue;
-      for (int j = 0; j < 26; j++)
-      {
+      for (int j = 0; j < 26; j++) {
         if (j == k)
           continue;
         tmp[i][j] = tmp[i][j] | (tmp[i][k] & tmp[k][j]);
@@ -36,12 +32,10 @@ bool warshall()
   return !(tmp[0][1] && tmp[1][0]);
 }
 
-int main()
-{
+int main() {
   int count = 0;
   fill(*adj, *adj + 26 * 26, false);
-  while (true)
-  {
+  while (true) {
     char a, b;
     cin >> a >> b;
     if (a == '*')
@@ -49,15 +43,11 @@ int main()
     adj[a - 65][b - 65] = true;
     adj[b - 65][a - 65] = true;
   }
-  for (int i = 0; i < 25; i++)
-  {
-    for (int j = i + 1; j < 26; j++)
-    {
-      if (adj[i][j])
-      {
+  for (int i = 0; i < 25; i++) {
+    for (int j = i + 1; j < 26; j++) {
+      if (adj[i][j]) {
         adj[i][j] = false;
-        if (warshall())
-        {
+        if (warshall()) {
           cout << (char)(i + 'A') << (char)(j + 'A') << endl;
           count++;
         }

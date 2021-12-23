@@ -11,24 +11,21 @@
  * 
  */
 
+#include <gmp.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <gmp.h>
 
-int main()
-{
+int main() {
   int n, r;
   scanf("%i", &n);
   char *s = malloc(51);
   mpz_t a, b;
   mpz_init(a);
   mpz_init(b);
-  for (int i = 1; i <= n; i++)
-  {
+  for (int i = 1; i <= n; i++) {
     scanf("%s", s);
     mpz_set_str(a, s, 10);
-    while (mpz_cmp_ui(a, 11) > 0)
-    {
+    while (mpz_cmp_ui(a, 11) > 0) {
       r = mpz_fdiv_q_ui(b, a, 10);
       mpz_sub_ui(a, b, r);
       printf("%s\n", mpz_get_str(NULL, 10, a));

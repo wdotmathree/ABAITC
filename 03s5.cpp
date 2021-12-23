@@ -11,26 +11,23 @@
  */
 
 #include <iostream>
-#include <vector>
 #include <queue>
+#include <vector>
 using namespace std;
 
 typedef pair<int, int> Road;
 
-int main()
-{
+int main() {
   int c, r, d, ta, tb, tw;
   cin >> c >> r >> d;
   vector<Road> roads[c + 1];
   int destinations[d];
-  for (int i = 0; i < r; i++)
-  {
+  for (int i = 0; i < r; i++) {
     cin >> ta >> tb >> tw;
     roads[ta].push_back({tw, tb});
     roads[tb].push_back({tw, ta});
   }
-  for (int i = 0; i < d; i++)
-  {
+  for (int i = 0; i < d; i++) {
     cin >> ta;
     destinations[i] = ta;
   }
@@ -39,16 +36,13 @@ int main()
   priority_queue<Road, vector<Road>, greater<Road>> q;
   q.push({0, 1});
   weights[1] = 0;
-  while (!q.empty())
-  {
+  while (!q.empty()) {
     Road cur = q.top();
     q.pop();
     int n = cur.second;
-    for (Road next : roads[n])
-    {
+    for (Road next : roads[n]) {
       int n2 = next.second;
-      if (next.first > weights[n2])
-      {
+      if (next.first > weights[n2]) {
         weights[n2] = next.first;
         q.push(next);
       }

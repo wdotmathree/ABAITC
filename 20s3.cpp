@@ -12,31 +12,26 @@
 #include <unordered_set>
 using namespace std;
 
-inline bool checkarrs(int *arra, int *arrb)
-{
+inline bool checkarrs(int *arra, int *arrb) {
   for (int i = 0; i < 26; i++)
     if (arra[i] != arrb[i])
       return false;
   return true;
 }
 
-long long hash(string str, int start, int end)
-{
+long long hash(string str, int start, int end) {
   long long value = 0;
   long long pow = 0;
-  for (int i = start; i < end; i++)
-  {
+  for (int i = start; i < end; i++) {
   }
 }
 
-long long hash(string str, int start, int end)
-{
+long long hash(string str, int start, int end) {
   long long h = (h * p + ord) % m;
   power = (power * p) % m;
 }
 
-int main()
-{
+int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
   string needle;
@@ -55,8 +50,7 @@ int main()
     counts[haystack[i] - 'a']++;
   if (checkarrs(ncounts, counts))
     p.insert(haystack.substr(0, needle.length()));
-  for (int i = 1; i <= lenhn; i++)
-  {
+  for (int i = 1; i <= lenhn; i++) {
     counts[haystack[i - 1] - 'a']--;
     counts[haystack[i + needle.length() - 1] - 'a']++;
     if (checkarrs(ncounts, counts))

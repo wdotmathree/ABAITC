@@ -12,11 +12,9 @@
 #include <unordered_map>
 using namespace std;
 
-void getsum(int32_t c, int32_t n, int32_t friends[], unordered_map<int32_t, int32_t> rates, unordered_map<int32_t, int32_t> hearing, uint64_t *result)
-{
+void getsum(int32_t c, int32_t n, int32_t friends[], unordered_map<int32_t, int32_t> rates, unordered_map<int32_t, int32_t> hearing, uint64_t *result) {
   *result = 0;
-  for (int i = 0; i < n; i++)
-  {
+  for (int i = 0; i < n; i++) {
     int64_t f = friends[i];
     f = (abs(c - f) - hearing[f]) * rates[f];
     if (f > 0)
@@ -24,8 +22,7 @@ void getsum(int32_t c, int32_t n, int32_t friends[], unordered_map<int32_t, int3
   }
 }
 
-int main()
-{
+int main() {
   unordered_map<int32_t, int32_t> rates;
   unordered_map<int32_t, int32_t> hearing;
   int32_t n, p, w, d;
@@ -33,8 +30,7 @@ int main()
   int32_t max = 0;
   cin >> n;
   int32_t friends[n];
-  for (int32_t i = 0; i < n; i++)
-  {
+  for (int32_t i = 0; i < n; i++) {
     cin >> p >> w >> d;
     friends[i] = p;
     rates[p] = w;
@@ -65,8 +61,7 @@ int main()
 
   int32_t mid;
   uint64_t suma, sumb;
-  while (min < max)
-  {
+  while (min < max) {
     mid = (min / 2) + (max / 2);
     getsum(mid, n, friends, rates, hearing, &suma);
     getsum(mid + 1, n, friends, rates, hearing, &sumb);
