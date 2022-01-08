@@ -18,7 +18,6 @@ int main() {
   cin >> dist >> nc;
   short clubs[nc], strokes[dist + 1];
   fill(strokes, strokes + dist + 1, 0);
-  strokes[0] = 0;
   for (short i = 0; i < nc; i++) {
     cin >> clubs[i];
     strokes[clubs[i]] = 1;
