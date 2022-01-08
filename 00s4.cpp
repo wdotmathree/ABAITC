@@ -17,7 +17,7 @@ int main() {
   short dist, nc, minc = 0x7fff;
   cin >> dist >> nc;
   short clubs[nc], strokes[dist + 1];
-  fill(strokes, strokes + dist + 1, 0);
+  fill(strokes, strokes + dist + 1, -1);
   for (short i = 0; i < nc; i++) {
     cin >> clubs[i];
     strokes[clubs[i]] = 1;
@@ -25,10 +25,10 @@ int main() {
       minc = clubs[i];
   }
   for (short i = 1; i <= dist; i++) {
-    if (strokes[i] != 0)
+    if (strokes[i] != -1)
       continue;
     if (i < minc)
-      strokes[i] = -1;
+      continue;
     short min = 0x7fff;
     for (short j = 0; j < nc; j++) {
       if (i < clubs[j])
